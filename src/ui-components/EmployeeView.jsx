@@ -11,7 +11,8 @@ const EmployeeView = () => {
   useEffect(() => {
     axios.get('/emp')
       .then(response => {
-        setEmployees(response.data);
+        const sortedEmployees = response.data.sort((a, b) => a.id - b.id);
+        setEmployees(sortedEmployees);
       })
       .catch(error => {
         console.error('There was an error!', error);
